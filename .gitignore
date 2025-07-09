@@ -3,6 +3,9 @@ dist/
 functions/
 .wrangler/
 
+# IDE
+.idea
+
 # generated types
 .astro/
 
