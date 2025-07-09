@@ -1,0 +1,31 @@
+---
+import type { IconName } from '@assets/icon-sprite';
+export { iconNames } from '@assets/icon-sprite';
+
+interface Props {
+  name: IconName;
+  [x:string]: any;
+}
+const { name, ...props } = Astro.props;
+const ariaLabel = props['aria-label'];
+const attributes = { 
+  ...props,
+  'aria-hidden': !ariaLabel,
+  role: props.role 
+    ? props.role
+    : ariaLabel ? 'img' : 'presentation',
+};
+---
+
+<svg { ...attributes } data-icon={name}>
+  <use href={`#${name}`} xlink:href={`#${name}`} />
+</svg>
+
+<style>
+  svg {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    color: currentColor;
+  }
+</style>

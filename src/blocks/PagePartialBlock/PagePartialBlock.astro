@@ -1,0 +1,21 @@
+---
+import type { PagePartialBlockFragment } from '@lib/datocms/types';
+import GroupingBlock from '@blocks/GroupingBlock/GroupingBlock.astro';
+import type { GroupingBlockFragment } from '@lib/datocms/types';
+
+export interface Props {
+  block: PagePartialBlockFragment
+}
+const { block } = Astro.props;
+
+---
+{/* Temporary solution to prevent breaking changes for existing Page Partial Blocks */}
+<GroupingBlock block={{
+  ...block,
+  __typename: 'GroupingBlockRecord',
+  items: block.items.map(item => ({
+    title: item.title,
+    blocks: item.blocks as GroupingBlockFragment['items'][number]['blocks'],
+    __typename: 'GroupingItemRecord'
+  }))
+}}/>
