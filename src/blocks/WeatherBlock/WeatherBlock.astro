@@ -1,0 +1,14 @@
+---
+import type { WeatherBlockFragment } from '@lib/datocms/types';
+import { WeatherBlock } from '@components/Weather';
+
+export interface Props {
+    block: WeatherBlockFragment
+}
+// const { block } = Astro.props;
+---
+
+<div class="weather-block">
+  <WeatherBlock client:load />
+</div>
+
