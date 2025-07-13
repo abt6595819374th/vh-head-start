@@ -1,0 +1,9 @@
+---
+import type { WeatherBlockFragment } from '@lib/datocms/types';
+
+export interface Props {
+    block: WeatherBlockFragment
+}
+const { block } = Astro.props;
+---
+<pre><code>WeatherBlock: {JSON.stringify(block, null, 2)}</code></pre>

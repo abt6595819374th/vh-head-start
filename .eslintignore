@@ -2,4 +2,5 @@ dist
 node_modules
 
 src/lib/datocms/types.ts
+src/lib/i18n/types.ts
 !**/.graphqlrc.ts
