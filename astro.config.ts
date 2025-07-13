@@ -3,7 +3,6 @@ import cloudflare from '@astrojs/cloudflare';
 import graphql from '@rollup/plugin-graphql';
 import sitemap from '@astrojs/sitemap';
 import Sonda from 'sonda/astro';
-import react from '@astrojs/react';
 import type { PluginOption } from 'vite';
 import pkg from './package.json';
 import { isPreview } from './config/preview';
@@ -75,6 +74,13 @@ export default defineConfig({
     ],
     optimizeDeps: {
       exclude: ['msw'],
+    },
+    resolve: {
+      // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
+      // Without this, MessageChannel from node:worker_threads needs to be polyfilled.
+      alias: import.meta.env.PROD && {
+        'react-dom/server': 'react-dom/server.edge',
+      },
     },
   },
 });
