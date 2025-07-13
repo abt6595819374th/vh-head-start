@@ -3,6 +3,7 @@ import cloudflare from '@astrojs/cloudflare';
 import graphql from '@rollup/plugin-graphql';
 import sitemap from '@astrojs/sitemap';
 import Sonda from 'sonda/astro';
+import react from '@astrojs/react';
 import type { PluginOption } from 'vite';
 import pkg from './package.json';
 import { isPreview } from './config/preview';
@@ -63,6 +64,7 @@ export default defineConfig({
       filename: 'reports/sonda-report-[env].html',
       server: true,
     }),
+    react(),
   ],
   output: isPreview ? 'server' : output, // @see `/config/output.ts``
   server: { port: localhostPort },
@@ -76,6 +78,6 @@ export default defineConfig({
     ],
     optimizeDeps: {
       exclude: ['msw'],
-    }
+    },
   },
 });
