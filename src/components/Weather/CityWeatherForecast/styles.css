@@ -1,11 +1,6 @@
 .city-weather-forecast {
   background-color: #ff8a66;
-  /*border-radius: 10px;*/
   color: #fff;
-  padding: 0 .625rem;
-  /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
-  /*padding: 1.5rem;*/
-  /*margin-top: 1rem;*/
 }
 
 /*.city-weather-forecast__loading {*/

@@ -39,7 +39,7 @@ const WeatherBlock = () => {
   };
 
   return (
-    <div className="weather-block">
+    <div className="weather-container">
       {(locationLoading || cityLoading) && (
         <div className="weather-block__loading">
           Getting your location...
@@ -47,23 +47,23 @@ const WeatherBlock = () => {
       )}
             
       {locationError && (
-        <div className="weather-block__error">
+        <div className="weather-container__error">
           {locationError}. Using default location.
         </div>
       )}
             
-      <form onSubmit={handleSearch} className="weather-block__form">
-        <div className="weather-block__input-container">
+      <form onSubmit={handleSearch} className="weather-container__form">
+        <div className="weather-container__input-container">
           <input
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Search for a city"
-            className="weather-block__input"
+            className="weather-container__input"
           />
           <button
             type="submit"
-            className="weather-block__search-icon"
+            className="weather-container__search-icon"
             aria-label="Search"
           >
             <SearchIcon />

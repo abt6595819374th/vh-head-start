@@ -1,4 +1,4 @@
-.weather-block {
+.weather-container {
   padding: 1rem;
   background-color: #ff8a66;
   color: #fff;
@@ -28,19 +28,20 @@
 /*  text-align: center;*/
 /*}*/
 
-.weather-block__form {
+.weather-container__form {
   margin-bottom: 2rem;
 }
 
-.weather-block__input-container {
+.weather-container__input-container {
   position: relative;
   display: flex;
   align-items: center;
   max-width: 400px;
+  padding-top: 1rem;
   margin: 0 auto;
 }
 
-.weather-block__input {
+.weather-container__input {
   width: 100%;
   padding: 0.75rem 3rem 0.75rem 1rem;
   font-size: 1rem;
@@ -51,18 +52,18 @@
   transition: all 0.2s ease;
 }
 
-.weather-block__input::placeholder {
+.weather-container__input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.weather-block__input:focus {
+.weather-container__input:focus {
   outline: none;
   border-color: rgba(255, 255, 255, 0.6);
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
-.weather-block__search-icon {
+.weather-container__search-icon {
   position: absolute;
   right: 0.75rem;
   background: none;
@@ -76,11 +77,11 @@
   justify-content: center;
 }
 
-.weather-block__search-icon:hover {
+.weather-container__search-icon:hover {
   color: #fff;
 }
 
-.weather-block__search-icon:focus {
+.weather-container__search-icon:focus {
   outline: none;
   color: #fff;
 }
