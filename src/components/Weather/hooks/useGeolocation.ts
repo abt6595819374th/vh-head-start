@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-interface GeolocationState {
+type GeolocationState  = {
     latitude: number | null
     longitude: number | null
     loading: boolean

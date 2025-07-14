@@ -1,55 +1,35 @@
+export type WeatherCondition = {
+  text: string;
+  icon: string;
+};
+
+export type Location = {
+  name: string;
+  country: string;
+};
+
+export type CurrentWeather = {
+  temp_c: number;
+  condition: WeatherCondition;
+};
+
+export type ForecastDay = {
+  maxtemp_c: number;
+  mintemp_c: number;
+  condition: WeatherCondition;
+};
+
+export type ForecastDayData = {
+  date: string;
+  day: ForecastDay;
+};
+
+export type Forecast = {
+  forecastday: ForecastDayData[];
+};
+
 export type WeatherData = {
-    location: {
-        name: string
-        country: string
-    }
-    current: {
-        temp_c: number
-        condition: {
-            text: string
-            icon: string
-        }
-    }
-    forecast: {
-        forecastday: {
-            date: string
-            day: {
-                avgtemp_c: number
-                condition: {
-                    text: string
-                    icon: string
-                }
-            }
-        }[]
-    }
-}
-
-export type CityWeatherForecastProps = {
-    city: string
-}
-
-export type CurrentWeatherProps = {
-    location: { name: string; country: string }
-    current: {
-        temp_c: number
-        condition: { text: string; icon: string }
-    }
-}
-
-export type ForecastDayProps = {
-    date: string
-    day: {
-        avgtemp_c: number
-        condition: { text: string; icon: string }
-    }
-}
-
-export type ForecastDisplayProps = {
-    forecast: {
-        date: string
-        day: {
-            avgtemp_c: number
-            condition: { text: string; icon: string }
-        }
-    }[]
-}
+  location: Location;
+  current: CurrentWeather;
+  forecast: Forecast;
+};

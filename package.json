@@ -36,7 +36,7 @@
     "preview": "wrangler pages dev ./dist",
     "lint": "run-s lint:* --print-label",
     "lint:astro": "astro check",
-    "lint:eslint": "eslint . --ext .js,.ts,.astro",
+    "lint:eslint": "eslint . --ext .js,.ts,.tsx,.astro",
     "lint:html": "html-validate --config config/htmlvalidate/config.json dist/",
     "pretest": "npm run prep",
     "test": "run-s test:*",

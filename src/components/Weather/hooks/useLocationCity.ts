@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-interface LocationCityState {
+type LocationCityState = {
     city: string | null
     loading: boolean
     error: string | null

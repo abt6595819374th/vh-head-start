@@ -1,1 +1,1 @@
-export { default as WeatherBlock } from './WeatherBlock.tsx';
+export { default as WeatherBlock } from './WeatherBlock';
