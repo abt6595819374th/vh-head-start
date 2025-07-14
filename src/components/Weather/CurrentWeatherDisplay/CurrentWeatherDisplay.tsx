@@ -21,7 +21,7 @@ const CurrentWeatherDisplay = ({ location, current }: CurrentWeatherProps) => {
         />
       </div>
       <div className="current-weather__info">
-        <span className="current-weather__temperature">{current.temp_c}°C</span>
+        <span className="current-weather__temperature">{Math.round(current.temp_c)}°C</span>
         <span className="current-weather__condition">{current.condition.text}</span>
       </div>
     </div>
