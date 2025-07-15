@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
 import type { WeatherData } from '../types';
 
-const useWeatherData = (city: string) => {
+const useWeatherData = (city: string | null) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!city) {
+      setWeather(null);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+
     const fetchWeather = async () => {
       try {
         setLoading(true);

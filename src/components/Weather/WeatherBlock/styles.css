@@ -6,27 +6,9 @@
   margin-bottom: 1rem;
 }
 
-/*.weather-block__loading {*/
-/*  margin-bottom: 1rem;*/
-/*  color: rgba(255, 255, 255, 0.9);*/
-/*  font-style: italic;*/
-/*  padding: 0.75rem;*/
-/*  background-color: rgba(255, 255, 255, 0.1);*/
-/*  border-radius: 8px;*/
-/*  border-left: 4px solid rgba(255, 255, 255, 0.3);*/
-/*  text-align: center;*/
-/*}*/
-
-/*.weather-block__error {*/
-/*  margin-bottom: 1rem;*/
-/*  color: #fff;*/
-/*  font-size: 0.9rem;*/
-/*  padding: 0.75rem;*/
-/*  background-color: rgba(220, 53, 69, 0.2);*/
-/*  border-radius: 8px;*/
-/*  border-left: 4px solid #dc3545;*/
-/*  text-align: center;*/
-/*}*/
+.weather-container__info-text {
+  font-size: 1rem;
+}
 
 .weather-container__form {
   margin-bottom: 2rem;

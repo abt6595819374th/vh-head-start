@@ -33,36 +33,7 @@ vi.mock('../hooks/useWeatherData', () => ({
   }))
 }));
 
-const mockAmsterdamWeatherData: WeatherData = {
-  location: {
-    name: 'Amsterdam',
-    country: 'Netherlands',
-  },
-  current: {
-    temp_c: 18,
-    condition: {
-      text: 'Partly cloudy',
-      icon: 'https://cdn.weatherapi.com/weather/64x64/day/116.png',
-    },
-  },
-  forecast: {
-    forecastday: [
-      {
-        date: '2024-01-01',
-        day: {
-          maxtemp_c: 20,
-          mintemp_c: 15,
-          condition: {
-            text: 'Cloudy',
-            icon: 'https://cdn.weatherapi.com/weather/64x64/day/119.png',
-          },
-        },
-      },
-    ],
-  },
-};
-
-const mockLondonWeatherData: WeatherData = {
+const weatherData: WeatherData = {
   location: {
     name: 'London',
     country: 'United Kingdom',
@@ -98,12 +69,17 @@ describe('WeatherBlock', () => {
     
     // Track calls to useWeatherData to verify city updates
     const weatherDataCalls: string[] = [];
-    useWeatherDataMock.mockImplementation((city: string) => {
-      weatherDataCalls.push(city);
-      // Return different weather data based on city
-      const weatherData = city === 'Amsterdam' ? mockAmsterdamWeatherData : mockLondonWeatherData;
+    useWeatherDataMock.mockImplementation((city: string | null) => {
+      if (city) {
+        weatherDataCalls.push(city);
+        return {
+          weather: weatherData,
+          loading: false,
+          error: null
+        };
+      }
       return {
-        weather: weatherData,
+        weather: null,
         loading: false,
         error: null
       };
@@ -111,20 +87,15 @@ describe('WeatherBlock', () => {
 
     render(<WeatherBlock />);
 
-    // Verify initial render with default city (Amsterdam)
-    expect(screen.getByPlaceholderText('Search for a city')).toBeTruthy();
+    // Verify initial render with no city selected
+    expect(screen.getByPlaceholderText('Search for a city or airport')).toBeTruthy();
     expect(screen.getByLabelText('Search')).toBeTruthy();
     
-    let heading = screen.getByRole('heading', { level: 2 });
-    expect(heading.textContent).toContain('Amsterdam');
-    expect(heading.textContent).toContain('Netherlands');
-    
-    // Verify Amsterdam weather data is shown
-    expect(screen.getByText('18°C')).toBeTruthy();
-    expect(screen.getByText('Partly cloudy')).toBeTruthy();
+    // Verify no city message is shown
+    expect(screen.getByText('Search for a city or airport to see weather information, or allow location access to get weather for your current location.')).toBeTruthy();
 
     // Find the search input and enter a city
-    const searchInput = screen.getByPlaceholderText('Search for a city');
+    const searchInput = screen.getByPlaceholderText('Search for a city or airport');
     fireEvent.change(searchInput, { target: { value: 'London' } });
     
     // Verify input value changed
@@ -140,12 +111,15 @@ describe('WeatherBlock', () => {
     });
 
     // Verify the component shows the new city name and weather data
-    heading = screen.getByRole('heading', { level: 2 });
+    const heading = screen.getByRole('heading', { level: 2 });
     expect(heading.textContent).toContain('London');
     expect(heading.textContent).toContain('United Kingdom');
     
     // Verify London weather data is shown
     expect(screen.getByText('22°C')).toBeTruthy();
     expect(screen.getByText('Sunny')).toBeTruthy();
+    
+    // Verify no city message is no longer shown
+    expect(screen.queryByText('Search for a city to see weather information, or allow location access to get weather for your current location.')).toBeFalsy();
   });
 });

@@ -11,9 +11,15 @@ type CityWeatherForecastProps = {
 
 const CityWeatherForecast = ({ weather, loading, error }: CityWeatherForecastProps) => {
 
-  if (loading) return <div className="city-weather-forecast__loading">Loading weather...</div>;
-  if (error) return <div className="city-weather-forecast__error">Error: {error}</div>;
-  if (!weather) return null;
+  if (loading) {
+    return <div className="city-weather-forecast__loading">Loading...</div>;
+  }
+  if (error) {
+    return <div className="city-weather-forecast__error">Error: {error}</div>;
+  }
+  if (!weather) {
+    return null;
+  }
 
   return (
     <div className="city-weather-forecast">

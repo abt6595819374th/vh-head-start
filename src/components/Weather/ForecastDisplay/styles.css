@@ -1,32 +1,8 @@
 .forecast-display {
-  /*margin-top: 1.5rem;*/
   padding-bottom: 2rem;
 }
 
-/*.forecast-display__title {*/
-/*  font-size: 1.25rem;*/
-/*  font-weight: 600;*/
-/*  color: #2c3e50;*/
-/*  margin-bottom: 1rem;*/
-/*  text-align: center;*/
-/*}*/
-
 .forecast-display__grid {
   display: flex;
-  /*gap: 1rem;*/
-  /*flex-wrap: wrap;*/
   justify-content: space-evenly;
 }
-
-/*@media (max-width: 768px) {*/
-/*  .forecast-display__grid {*/
-/*    gap: 0.5rem;*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 480px) {*/
-/*  .forecast-display__grid {*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*  }*/
-/*}*/

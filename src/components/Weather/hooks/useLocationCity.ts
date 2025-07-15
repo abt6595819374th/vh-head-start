@@ -21,7 +21,7 @@ const useLocationCity = (latitude: number | null, longitude: number | null) => {
     const fetchLocationCity = async () => {
       try {
         setState(prev => ({ ...prev, loading: true, error: null }));
-                
+
         const response = await fetch(
           `https://api.weatherapi.com/v1/current.json?key=${
             import.meta.env.PUBLIC_WEATHER_API_KEY

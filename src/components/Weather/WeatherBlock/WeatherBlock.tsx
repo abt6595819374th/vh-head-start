@@ -7,7 +7,7 @@ import useWeatherData from '../hooks/useWeatherData';
 import './styles.css';
 
 const WeatherBlock = () => {
-  const [city, setCity] = useState('Amsterdam');
+  const [city, setCity] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState('');
   const pendingSearchRef = useRef<string | null>(null);
     
@@ -40,25 +40,13 @@ const WeatherBlock = () => {
 
   return (
     <div className="weather-container">
-      {(locationLoading || cityLoading) && (
-        <div className="weather-block__loading">
-          Getting your location...
-        </div>
-      )}
-            
-      {locationError && (
-        <div className="weather-container__error">
-          {locationError}. Using default location.
-        </div>
-      )}
-            
       <form onSubmit={handleSearch} className="weather-container__form">
         <div className="weather-container__input-container">
           <input
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Search for a city"
+            placeholder="Search for a city or airport"
             className="weather-container__input"
           />
           <button
@@ -71,7 +59,20 @@ const WeatherBlock = () => {
         </div>
       </form>
 
-      <CityWeatherForecast weather={weather} loading={weatherLoading} error={weatherError} />
+      {!city && !locationLoading && !cityLoading && (
+        <div className="weather-container__info-text">
+          <p>Search for a city or airport to see weather information, or allow location access to get weather for your current location.</p>
+        </div>
+      )}
+      {(locationLoading || cityLoading) && (
+        <div className="weather-container__info-text">
+          Getting your location...
+        </div>
+      )}
+      
+      {city && (
+        <CityWeatherForecast weather={weather} loading={weatherLoading} error={weatherError} />
+      )}
     </div>
   );
 };
