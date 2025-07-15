@@ -15,8 +15,14 @@ const ForecastDay = ({ date, day }: ForecastDayData) => {
         title={day.condition.text}
         className="forecast-day__icon"
       />
-      <div className="forecast-day__min-temperature">{Math.round(day.mintemp_c)}°C</div>
-      <div className="forecast-day__max-temperature">{Math.round(day.maxtemp_c)}°C</div>
+      <div className="forecast-day__min-temperature" title="Lowest temperature">
+        <div className="sr-only">Lowest temperature</div>
+        {Math.round(day.mintemp_c)}°C
+      </div>
+      <div className="forecast-day__max-temperature" title="Highest temperature">
+        <div className="sr-only">Highest temperature</div>
+        {Math.round(day.maxtemp_c)}°C
+      </div>
     </div>
   );
 };

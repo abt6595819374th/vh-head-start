@@ -40,7 +40,7 @@ const WeatherBlock = () => {
 
   return (
     <div className="weather-container">
-      <form onSubmit={handleSearch} className="weather-container__form">
+      <form onSubmit={handleSearch} className="weather-container__form" role="search">
         <div className="weather-container__input-container">
           <input
             type="text"
@@ -70,9 +70,11 @@ const WeatherBlock = () => {
         </div>
       )}
       
-      {city && (
-        <CityWeatherForecast weather={weather} loading={weatherLoading} error={weatherError} />
-      )}
+      <div aria-live="polite" aria-atomic="true">
+        {city && (
+          <CityWeatherForecast weather={weather} loading={weatherLoading} error={weatherError}  aria-live="polite" />
+        )}
+      </div>
     </div>
   );
 };
